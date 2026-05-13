@@ -175,6 +175,14 @@
     ]
   },
   {
+    "name": "esql-fetch-phase",
+    "description": "Indexes and executes ES|QL profile fetch, sort, and limit queries",
+    "default": false,
+    "schedule": [
+      {{ rally.collect(parts="common/esql-fetch-phase.json") }}
+    ]
+  },
+  {
     "name": "ingest-autoscale",
     "description": "Benchmark bulk indexing with configurable steps",
     "default": false,

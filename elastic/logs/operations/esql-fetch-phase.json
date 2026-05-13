@@ -1,0 +1,40 @@
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-10",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | SORT @timestamp DESC | LIMIT 10"
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-100",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | SORT @timestamp DESC | LIMIT 100"
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-1000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | SORT @timestamp DESC | LIMIT 1000"
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-10000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | SORT @timestamp DESC | LIMIT 10000"
+},
+{
+  "name": "esql-fetch-narrow-sort-matchall-limit-1000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | KEEP @timestamp | SORT @timestamp DESC | LIMIT 1000"
+},
+{
+  "name": "esql-fetch-narrow-sort-matchall-limit-10000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | KEEP @timestamp | SORT @timestamp DESC | LIMIT 10000"
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-1000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | WHERE user_agent.name == \"Firefox\" | SORT @timestamp DESC | LIMIT 1000"
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-10000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* | WHERE user_agent.name == \"Firefox\" | SORT @timestamp DESC | LIMIT 10000"
+}

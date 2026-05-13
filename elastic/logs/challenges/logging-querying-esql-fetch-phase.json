@@ -1,0 +1,143 @@
+{% import "rally.helpers" as rally %}
+{
+  "name": "logging-querying-esql-fetch-phase",
+  "description": "Applies ES|QL profile fetch, sort, and limit queries over logs data.",
+  "parameters": {
+    "generate-data": {{ true | tojson if bulk_start_date and bulk_end_date else false | tojson }}
+  },
+  "schedule": [
+    {% include "tasks/many-shards-setup.json" %},
+    {% if bulk_start_date and bulk_end_date %}
+      {
+        "name": "bulk-index",
+        "operation": {
+          "operation-type": "raw-bulk",
+          "param-source": "processed-source",
+          "time-format": "milliseconds",
+          "profile": "fixed_interval",
+          "init-load": true,
+          "bulk-size": {{ p_bulk_size }},
+          "detailed-results": true
+        },
+        "clients": {{ p_bulk_indexing_clients }},
+        "ignore-response-error-level": "{{error_level | default('non-fatal')}}"
+      }
+      {%- if force_merge_max_num_segments is defined %},
+      {
+        "name": "refresh-after-index",
+        "index": "logs-*",
+        "operation": "refresh"
+      },
+      {
+        "name": "wait-until-index-merges-fininshes",
+        "operation": {
+          "operation-type": "index-stats",
+          "index": "logs-*",
+          "condition": {
+            "path": "_all.total.merges.current",
+            "expected-value": 0
+          },
+          "retry-until-success": true,
+          "include-in-reporting": false
+        },
+        "tags": ["wait"]
+      },
+      {
+        "operation": {
+          "operation-type": "force-merge",
+          "index": "logs-*",
+          "request-timeout": 36000,
+          "max-num-segments": {{ force_merge_max_num_segments | tojson }}
+        }
+      },
+      {
+        "name": "wait-until-merges-finish",
+        "operation": {
+          "operation-type": "index-stats",
+          "index": "logs-*",
+          "condition": {
+            "path": "_all.total.merges.current",
+            "expected-value": 0
+          },
+          "retry-until-success": true,
+          "include-in-reporting": false
+        }
+      },
+      {
+        "name": "refresh-after-force-merge",
+        "index": "logs-*",
+        "operation": "refresh"
+      }
+      {%- endif %}
+      ,
+    {% endif %}
+    {
+      "operation": "disable_query_cache",
+      "tags": ["esql-profile", "settings"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-matchall-limit-10",
+      "operation": "esql-fetch-wide-sort-matchall-limit-10",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-matchall-limit-100",
+      "operation": "esql-fetch-wide-sort-matchall-limit-100",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-matchall-limit-1000",
+      "operation": "esql-fetch-wide-sort-matchall-limit-1000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-matchall-limit-10000",
+      "operation": "esql-fetch-wide-sort-matchall-limit-10000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-narrow-sort-matchall-limit-1000",
+      "operation": "esql-fetch-narrow-sort-matchall-limit-1000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-narrow-sort-matchall-limit-10000",
+      "operation": "esql-fetch-narrow-sort-matchall-limit-10000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-selective-limit-1000",
+      "operation": "esql-fetch-wide-sort-selective-limit-1000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+    },
+    {
+      "name": "esql-fetch-wide-sort-selective-limit-10000",
+      "operation": "esql-fetch-wide-sort-selective-limit-10000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+    }
+  ]
+}

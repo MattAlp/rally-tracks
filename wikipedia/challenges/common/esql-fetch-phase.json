@@ -1,0 +1,106 @@
+{
+  "name": "delete-index",
+  "operation": "delete-index",
+  "tags": ["setup"]
+},
+{
+  "name": "create-index",
+  "operation": "create-index",
+  "tags": ["setup"]
+},
+{
+  "name": "check-cluster-health",
+  "operation": "check-cluster-health",
+  "tags": ["setup"]
+},
+{
+  "name": "initial-documents-indexing",
+  "operation": "initial-documents-indexing",
+  "tags": ["index"],
+  "warmup-time-period": {{ initial_indexing_bulk_warmup_time_period | default(40) | int }},
+  "clients": {{ initial_indexing_bulk_clients | default(5) | int }}
+},
+{
+  "name": "refresh-after-index",
+  "operation": "refresh-after-index",
+  "tags": ["index"]
+},
+{
+  "name": "force-merge",
+  "operation": "force-merge",
+  "tags": ["index"]
+},
+{
+  "name": "refresh-after-force-merge",
+  "operation": "refresh-after-force-merge",
+  "tags": ["index"]
+},
+{
+  "name": "wait-until-merges-finish-after-index",
+  "operation": "wait-until-merges-finish-after-index",
+  "tags": ["index"]
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-10",
+  "operation": "esql-fetch-wide-sort-matchall-limit-10",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-100",
+  "operation": "esql-fetch-wide-sort-matchall-limit-100",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-1000",
+  "operation": "esql-fetch-wide-sort-matchall-limit-1000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-10000",
+  "operation": "esql-fetch-wide-sort-matchall-limit-10000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-narrow-sort-matchall-limit-1000",
+  "operation": "esql-fetch-narrow-sort-matchall-limit-1000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-narrow-sort-matchall-limit-10000",
+  "operation": "esql-fetch-narrow-sort-matchall-limit-10000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-1000",
+  "operation": "esql-fetch-wide-sort-selective-limit-1000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-10000",
+  "operation": "esql-fetch-wide-sort-selective-limit-10000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+}
