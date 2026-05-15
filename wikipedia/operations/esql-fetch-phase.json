@@ -1,40 +1,40 @@
 {
   "name": "esql-fetch-wide-sort-matchall-limit-10",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 10"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 10"
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-100",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 100"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 100"
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-1000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 1000"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 1000"
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-10000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 10000"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 10000"
 },
 {
   "name": "esql-fetch-narrow-sort-matchall-limit-1000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 1000 | KEEP title"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 1000 | KEEP title"
 },
 {
   "name": "esql-fetch-narrow-sort-matchall-limit-10000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") | SORT _score DESC | LIMIT 10000 | KEEP title"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 10000 | KEEP title"
 },
 {
   "name": "esql-fetch-wide-sort-selective-limit-1000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 1000"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 1000"
 },
 {
   "name": "esql-fetch-wide-sort-selective-limit-10000",
   "operation-type": "esql-profile",
-  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 10000"
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 10000"
 }

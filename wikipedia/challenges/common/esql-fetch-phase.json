@@ -46,7 +46,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-100",
@@ -54,7 +54,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-1000",
@@ -62,7 +62,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-wide-sort-matchall-limit-10000",
@@ -70,7 +70,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-narrow-sort-matchall-limit-1000",
@@ -78,7 +78,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-narrow-sort-matchall-limit-10000",
@@ -86,7 +86,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "narrow", "matchall", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-wide-sort-selective-limit-1000",
@@ -94,7 +94,7 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+  "tags": ["esql-profile", "fetch"]
 },
 {
   "name": "esql-fetch-wide-sort-selective-limit-10000",
@@ -102,5 +102,5 @@
   "clients": {{ standalone_search_clients | default(20) | int }},
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
-  "tags": ["esql-profile", "fetch", "wide", "selective", "limit"]
+  "tags": ["esql-profile", "fetch"]
 }
