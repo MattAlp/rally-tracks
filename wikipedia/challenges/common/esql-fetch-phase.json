@@ -103,4 +103,52 @@
   "warmup-iterations": {{ warmup_iterations | default(100) }},
   "iterations": {{ profile_iterations | default(100) }},
   "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-10",
+  "operation": "esql-fetch-source-sort-matchall-limit-10",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-100",
+  "operation": "esql-fetch-source-sort-matchall-limit-100",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-1000",
+  "operation": "esql-fetch-source-sort-matchall-limit-1000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-10000",
+  "operation": "esql-fetch-source-sort-matchall-limit-10000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-selective-limit-1000",
+  "operation": "esql-fetch-source-sort-selective-limit-1000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
+},
+{
+  "name": "esql-fetch-source-sort-selective-limit-10000",
+  "operation": "esql-fetch-source-sort-selective-limit-10000",
+  "clients": {{ standalone_search_clients | default(20) | int }},
+  "warmup-iterations": {{ warmup_iterations | default(100) }},
+  "iterations": {{ profile_iterations | default(100) }},
+  "tags": ["esql-profile", "fetch"]
 }

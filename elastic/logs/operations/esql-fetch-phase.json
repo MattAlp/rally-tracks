@@ -37,4 +37,34 @@
   "name": "esql-fetch-wide-sort-selective-limit-10000",
   "operation-type": "esql-profile",
   "query": "FROM {{p_esql_target_prefix}}logs-* | WHERE user_agent.name == \"Firefox\" | SORT @timestamp DESC | LIMIT 10000"
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-10",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | SORT @timestamp DESC | LIMIT 10 | KEEP _source"
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-100",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | SORT @timestamp DESC | LIMIT 100 | KEEP _source"
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-1000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | SORT @timestamp DESC | LIMIT 1000 | KEEP _source"
+},
+{
+  "name": "esql-fetch-source-sort-matchall-limit-10000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | SORT @timestamp DESC | LIMIT 10000 | KEEP _source"
+},
+{
+  "name": "esql-fetch-source-sort-selective-limit-1000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | WHERE user_agent.name == \"Firefox\" | SORT @timestamp DESC | LIMIT 1000 | KEEP _source"
+},
+{
+  "name": "esql-fetch-source-sort-selective-limit-10000",
+  "operation-type": "esql-profile",
+  "query": "FROM {{p_esql_target_prefix}}logs-* METADATA _source | WHERE user_agent.name == \"Firefox\" | SORT @timestamp DESC | LIMIT 10000 | KEEP _source"
 }

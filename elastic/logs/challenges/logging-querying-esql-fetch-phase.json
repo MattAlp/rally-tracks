@@ -138,6 +138,54 @@
       "warmup-iterations": {{ warmup_iterations | default(20) }},
       "iterations": {{ profile_iterations | default(100) }},
       "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-matchall-limit-10",
+      "operation": "esql-fetch-source-sort-matchall-limit-10",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-matchall-limit-100",
+      "operation": "esql-fetch-source-sort-matchall-limit-100",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-matchall-limit-1000",
+      "operation": "esql-fetch-source-sort-matchall-limit-1000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-matchall-limit-10000",
+      "operation": "esql-fetch-source-sort-matchall-limit-10000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-selective-limit-1000",
+      "operation": "esql-fetch-source-sort-selective-limit-1000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
+    },
+    {
+      "name": "esql-fetch-source-sort-selective-limit-10000",
+      "operation": "esql-fetch-source-sort-selective-limit-10000",
+      "clients": {{ p_search_clients }},
+      "warmup-iterations": {{ warmup_iterations | default(20) }},
+      "iterations": {{ profile_iterations | default(100) }},
+      "tags": ["esql-profile", "fetch"]
     }
   ]
 }
