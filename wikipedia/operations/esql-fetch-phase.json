@@ -38,6 +38,71 @@
   "operation-type": "esql-profile",
   "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 10000"
 },
+
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-1000-remote-fetch-topn",
+  "operation-type": "esql-profile",
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 1000",
+  "body": {
+    "accept_pragma_risks": true,
+    "pragma": {
+      "node_level_reduction": true,
+      "remote_fetch_topn": true,
+      "data_partitioning": "shard",
+      "task_concurrency": 1,
+      "max_concurrent_nodes_per_cluster": 10,
+      "max_concurrent_shards_per_node": 10
+    }
+  }
+},
+{
+  "name": "esql-fetch-wide-sort-matchall-limit-10000-remote-fetch-topn",
+  "operation-type": "esql-profile",
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") | SORT _score DESC | LIMIT 10000",
+  "body": {
+    "accept_pragma_risks": true,
+    "pragma": {
+      "node_level_reduction": true,
+      "remote_fetch_topn": true,
+      "data_partitioning": "shard",
+      "task_concurrency": 1,
+      "max_concurrent_nodes_per_cluster": 10,
+      "max_concurrent_shards_per_node": 10
+    }
+  }
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-1000-remote-fetch-topn",
+  "operation-type": "esql-profile",
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 1000",
+  "body": {
+    "accept_pragma_risks": true,
+    "pragma": {
+      "node_level_reduction": true,
+      "remote_fetch_topn": true,
+      "data_partitioning": "shard",
+      "task_concurrency": 1,
+      "max_concurrent_nodes_per_cluster": 10,
+      "max_concurrent_shards_per_node": 10
+    }
+  }
+},
+{
+  "name": "esql-fetch-wide-sort-selective-limit-10000-remote-fetch-topn",
+  "operation-type": "esql-profile",
+  "query": "FROM wikipedia METADATA _score | WHERE MATCH(content, \"industrial revolution\") AND namespace IS NOT NULL | SORT _score DESC | LIMIT 10000",
+  "body": {
+    "accept_pragma_risks": true,
+    "pragma": {
+      "node_level_reduction": true,
+      "remote_fetch_topn": true,
+      "data_partitioning": "shard",
+      "task_concurrency": 1,
+      "max_concurrent_nodes_per_cluster": 10,
+      "max_concurrent_shards_per_node": 10
+    }
+  }
+},
 {
   "name": "esql-fetch-source-sort-matchall-limit-10",
   "operation-type": "esql-profile",
